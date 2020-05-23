@@ -1,3 +1,5 @@
+const IMG_URL = process.env.IMG_URL
+
 export const state = () => ({
   homedata: [],
 
@@ -14,8 +16,9 @@ export const mutations = {
 export const actions = {
     async getHome ({ commit }) {
     const response = await this.$axios.get('/api/gethome')
-
-    commit('SET_HOME', response.data)
+    let data = response.data
+    data.header.image = `${IMG_URL}${data.header.banner.formats.large.url}`
+    commit('SET_HOME', data)
   }
 
 }

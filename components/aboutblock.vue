@@ -1,14 +1,20 @@
 <template>
-  <div class="center">
-    <v-overlay absolute opacity=".65">
-      <div class="headline">{{ about.headline }}</div>
-      <div class="subtitle-1">{{ about.description }}</div>
-    </v-overlay>
-  </div>
+
+    <v-flex xs12 sm4 class="my-3">
+
+        <h2 class="headline">{{ about.headline }}</h2>
+        <Markdown :markdown="about.description" />
+
+    </v-flex>
+
 </template>
 
 <script>
+import Markdown from '~/components/Markdown'
 export default {
+  components: {
+    Markdown
+  },
   props: {
     about: {
       type: Object,

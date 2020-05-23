@@ -1,38 +1,27 @@
 <template>
-<div>
-<v-parallax height="300" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
-         <v-row
-      align="center"
-      justify="center"
-    >
-          <v-col class="text-center" cols="12">
-            <div class="subheading">{{header.title}}</div>
-            <div class="body-1">{{header.description}}</div>
-          </v-col>
-        </v-row>
-      </v-parallax>
 
+    <v-img height="300" :src="header.image">
 
+        <v-overlay absolute opacity=".25">
 
+            <div class="headline">{{ header.title }}</div>
+            <div class="subtitle-1">{{ header.description }}</div>
 
+        </v-overlay>
 
-</div>
+    </v-img>
+
 </template>
 
 <script>
 export default {
-
   props: {
     header: {
       type: Object,
       default: null
-    },
-
+    }
   }
 }
-
 </script>
 
-<style>
-
-</style>
+<style></style>

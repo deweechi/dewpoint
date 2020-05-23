@@ -13,12 +13,16 @@ app.get('/', async (req, res) => {
     res.send(response.data)
   })
   .catch(function (error) {
-    res.status(404).send('Note Found')
+    res.status(404).send('Not Found')
 
   });
 
 
 });
+
+
+
+
 module.exports = {
   path:"/api/gethome",
   handler:app

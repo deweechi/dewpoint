@@ -29,10 +29,11 @@
       return {
         valid: false,
         showPassword: false,
-        hasName: false,
+
         userInfo: {
-          email: '',
-          password: ''
+          identifier: 'test01',
+          email: 'test@test.com',
+          password: 'password'
         },
         ...validations
       }

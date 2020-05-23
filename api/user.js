@@ -7,39 +7,19 @@ var jwt = require('jwt-simple');
 
 const app = express();
 app.use(express.json());
-//identifier: 'test01',
-    //password: 'password',
-app.post('/', async (req, res) => {
+app.get('/', async (req, res) => {
 
-console.log(req)
-  var token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['authorization'];
-  console.log('In the user.js file',token)
-
-  if (token) {
-    try {
-      var decoded = jwt.decode(token, app.get('jwt'));
-
-      console.log(decoded)
-
-    } catch (error) {
-
+  let token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['authorization'];
+    let config = {
+    headers: {
+       Authorization: token
     }
-  } else {
+ }
+/
 
-  }
-})
-//console.log('FROM USER:', ...req.headers.authorization);
-
-
-
-/*   axios.post('http://localhost:1337/users/me',{
-...req.headers.authorization
-  })
+   axios.get('http://localhost:1337/users/me', config)
   .then(response => {
-    // Handle success.
-   // console.log('Well done!');
-    //console.log('User FROM USERJS', response.data.user);
-  //  console.log('User token', response.data.jwt);
+
     res.send(response.data);
   })
   .catch(error => {
@@ -47,7 +27,7 @@ console.log(req)
     console.log('An error occurred:', error);
   });
 
-}); */
+});
 
 
 module.exports = {

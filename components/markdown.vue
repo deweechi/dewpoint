@@ -1,5 +1,5 @@
 <template lang="md">
-  <div v-html="renderedMd" />
+  <div class="subheading" v-html="renderedMd" />
 </template>
 
 <script>

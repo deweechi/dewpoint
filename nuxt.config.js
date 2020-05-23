@@ -2,6 +2,7 @@ const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
   mode: 'universal',
+  //mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -36,6 +37,7 @@ module.exports = {
   */
   buildModules: [
     '@nuxtjs/vuetify',
+    ['@nuxtjs/dotenv', { only: ['MAGIC'] }]
   ],
   /*
   ** Nuxt.js modules
@@ -45,7 +47,40 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    //adding markdown render
+    '@nuxtjs/markdownit',
+    //add @nuxtjs/auth to handle user logins
+    '@nuxtjs/auth'
   ],
+  markdownit: {
+    injected: true
+  },
+/*
+**Adding server middleware to fetch the data
+*/
+  serverMiddleware: [
+    '~/api/getdata',
+    '~/api/login',
+    '~/api/user',
+  ],
+  auth: {
+    strategies: {
+    local: {
+      endpoints:{
+        login: {url: '/api/login', method: 'post', propertyName: 'jwt'},
+        user: {url: '/api/user', method: 'get', propertyName: false}
+      },
+      tokenType: 'Bearer'
+    }},
+    redirect: {
+      login: '/',
+      logout: '/',
+      user: '/',
+      callback:'/'
+    }
+  },
+
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

@@ -14,8 +14,11 @@ export default {
     UserAuthForm
   },
   methods: {
-    loginUser(){
-      alert('trying to login')
+    loginUser(loginInfo){
+      this.$auth.loginWith('local', {
+        data: loginInfo
+      })
+
     }
   }
 }
