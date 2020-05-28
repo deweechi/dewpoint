@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <h1>Register</h1>
-    <UserAuthForm buttonText='Register' :submitForm='registerUser' hasName="true" />
+    <p>Registration is currently closed. Customers will be provied with details for creating an account. If you have any questions please fill out the contact us form.</p>
+ <!--    <UserAuthForm buttonText='Register' :submitForm='registerUser' hasName="true" /> -->
   </v-container>
 </template>
 

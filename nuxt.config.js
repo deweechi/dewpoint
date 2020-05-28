@@ -72,14 +72,17 @@ module.exports = {
       },
       tokenType: 'Bearer'
     }},
-    redirect: {
+    rewriteRedirects:true,
+    /* redirect: {
       login: '/',
       logout: '/',
       user: '/',
       callback:'/'
-    }
+    } */
   },
-
+  plugins: [
+    '~/plugins/notifier.js'
+  ],
 
   /*
   ** Axios module configuration

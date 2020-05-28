@@ -1,13 +1,14 @@
 <template>
   <v-form v-model="valid">
-    <v-text-field v-model="userInfo.name"
-                  label="Name"
+    <v-text-field v-model="userInfo.identifier"
+                  label="UserName"
                   :rules="[required('name')]"
-                  v-if="hasName" />
+                  />
 
     <v-text-field v-model="userInfo.email"
                   label="Email"
-                  :rules="[required('email'), emailFormat()]"/>
+                  :rules="[required('email'), emailFormat()]"
+                  v-if="hasName" />
 
     <v-text-field v-model="userInfo.password"
                   label="Password"
@@ -31,9 +32,8 @@
         showPassword: false,
 
         userInfo: {
-          identifier: 'test01',
-          email: 'test@test.com',
-          password: 'password'
+          identifier: '',
+          password: ''
         },
         ...validations
       }
